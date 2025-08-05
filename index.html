@@ -450,15 +450,10 @@
 
     /* Contact */
     .contact-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-    }
-
-    .contact-info {
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       gap: 2rem;
+      flex-wrap: wrap;
     }
 
     .contact-card {
@@ -467,6 +462,8 @@
       border-radius: 10px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
       transition: var(--transition);
+      width: 100%;
+      max-width: 500px;
     }
 
     .contact-card:hover {
@@ -500,6 +497,8 @@
       color: var(--gray);
       text-decoration: none;
       transition: var(--transition);
+      display: block;
+      margin-bottom: 1rem;
     }
 
     .contact-link:hover {
@@ -509,7 +508,7 @@
     .social-links {
       display: flex;
       gap: 1rem;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
     }
 
     .social-link {
@@ -528,38 +527,6 @@
       background: var(--primary);
       color: white;
       transform: translateY(-3px);
-    }
-
-    .contact-form .form-group {
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-form label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 0.8rem 1rem;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      font-family: inherit;
-      transition: var(--transition);
-    }
-
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-    }
-
-    .contact-form textarea {
-      min-height: 150px;
-      resize: vertical;
     }
 
     /* Footer */
@@ -632,8 +599,7 @@
     /* Responsive */
     @media (max-width: 992px) {
       .hero-content,
-      .about-content,
-      .contact-container {
+      .about-content {
         grid-template-columns: 1fr;
       }
 
@@ -722,7 +688,7 @@
           <p>My current focus areas include full-stack development, system design, and exploring the intersections of AI with traditional software development.</p>
         </div>
         <div class="about-image">
-          <img src="" alt="About me">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="About me">
         </div>
       </div>
     </div>
@@ -847,49 +813,32 @@
     <div class="container">
       <h2 class="section-title">Get In Touch</h2>
       <div class="contact-container">
-        <div class="contact-info">
-          <div class="contact-card">
-            <div class="contact-title">
-              <div class="contact-icon">
-                <i class="fas fa-phone-alt"></i>
-              </div>
-              <div class="contact-text">Phone</div>
+        <div class="contact-card">
+          <div class="contact-title">
+            <div class="contact-icon">
+              <i class="fas fa-phone-alt"></i>
             </div>
-            <a href="tel:+8801648806191" class="contact-link">+880 1648-806191</a>
+            <div class="contact-text">Phone</div>
           </div>
-          <div class="contact-card">
-            <div class="contact-title">
-              <div class="contact-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div class="contact-text">Email</div>
+          <a href="tel:+8801648806191" class="contact-link">+880 1648-806191</a>
+          
+          <div class="contact-title" style="margin-top: 2rem;">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
             </div>
-            <a href="mailto:your.email@example.com" class="contact-link">your.email@example.com</a>
-            <div class="social-links">
-              <a href="https://www.linkedin.com/in/taufiq-zahan-tushar/" class="social-link" target="_blank">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-              <a href="https://github.com/ToufiqTushar" class="social-link" target="_blank">
-                <i class="fab fa-github"></i>
-              </a>
-            </div>
+            <div class="contact-text">Email</div>
+          </div>
+          <a href="mailto:your.email@example.com" class="contact-link">your.email@example.com</a>
+          
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/taufiq-zahan-tushar/" class="social-link" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/ToufiqTushar" class="social-link" target="_blank" rel="noopener noreferrer">
+              <i class="fab fa-github"></i>
+            </a>
           </div>
         </div>
-        <form class="contact-form">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Your name">
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Your email">
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" placeholder="Your message"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
       </div>
     </div>
   </section>
@@ -906,10 +855,10 @@
           <a href="#contact" class="footer-link">Contact</a>
         </div>
         <div class="footer-socials">
-          <a href="https://www.linkedin.com/in/taufiq-zahan-tushar/" class="footer-social" target="_blank">
+          <a href="https://www.linkedin.com/in/taufiq-zahan-tushar/" class="footer-social" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-linkedin-in"></i>
           </a>
-          <a href="https://github.com/ToufiqTushar" class="footer-social" target="_blank">
+          <a href="https://github.com/ToufiqTushar" class="footer-social" target="_blank" rel="noopener noreferrer">
             <i class="fab fa-github"></i>
           </a>
         </div>
