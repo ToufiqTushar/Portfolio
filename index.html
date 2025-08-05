@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taufiq Zahan Tushar | CSE Student Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <style>
+    :root {
+      /* Dark mode colors */
+      --dark-bg: #0f172a;
+      --dark-header: #1e293b;
+      --dark-text: #f1f5f9;
+      --dark-card: #1e293b;
+      --dark-accent: #38bdf8;
+      --dark-accent-hover: #0ea5e9;
+      --dark-progress-bg: #334155;
+      
+      /* Light mode colors - improved contrast */
+      --light-bg: #ffffff;
+      --light-header: #f8fafc;
+      --light-text: #1e293b;
+      --light-card: #f1f5f9;
+      --light-accent: #2563eb;
+      --light-accent-hover: #1d4ed8;
+      --light-progress-bg: #e2e8f0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+
+    body.light-mode {
+      background: var(--light-bg);
+      color: var(--light-text);
+    }
+
+    header {
+      background: var(--dark-header);
+      padding: 1.2rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .light-mode header {
+      background: var(--light-header);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--dark-accent);
+    }
+
+    .light-mode .logo {
+      color: var(--light-accent);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--dark-text);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .light-mode nav a {
+      color: var(--light-text);
+    }
+
+    nav a:hover {
+      color: var(--dark-accent);
+    }
+
+    .light-mode nav a:hover {
+      color: var(--light-accent);
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: none;
+      color: var(--dark-text);
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.3s;
+      padding: 0.5rem;
+    }
+
+    .light-mode .theme-toggle {
+      color: var(--light-text);
+    }
+
+    .theme-toggle:hover {
+      color: var(--dark-accent);
+      transform: rotate(30deg);
+    }
+
+    .light-mode .theme-toggle:hover {
+      color: var(--light-accent);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #1e3a8a, #0f172a);
+      text-align: center;
+      padding: 6rem 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .light-mode .hero {
+      background: linear-gradient(135deg, #3b82f6, #f1f5f9);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero span#typed {
+      color: var(--dark-accent);
+      font-weight: 600;
+    }
+
+    .light-mode .hero span#typed {
+      color: var(--light-accent);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .buttons a {
+      padding: 0.75rem 1.5rem;
+      background: var(--dark-accent);
+      color: #0f172a;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 6px;
+      margin: 0.5rem;
+      transition: background 0.3s;
+      display: inline-block;
+    }
+
+    .light-mode .buttons a {
+      background: var(--light-accent);
+      color: white;
+    }
+
+    .buttons a:hover {
+      background: var(--dark-accent-hover);
+    }
+
+    .light-mode .buttons a:hover {
+      background: var(--light-accent-hover);
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--dark-accent);
+    }
+
+    .light-mode section h2 {
+      color: var(--light-accent);
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--dark-card);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s;
+    }
+
+    .light-mode .project-card {
+      background: var(--light-card);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-card h3 {
+      color: var(--dark-accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .light-mode .project-card h3 {
+      color: var(--light-accent);
+    }
+
+    .project-card a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    .light-mode .project-card a {
+      color: #2563eb;
+    }
+
+    .skills-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.2rem;
+      padding: 1rem 0;
+    }
+
+    .skill {
+      background: var(--dark-card);
+      padding: 1rem;
+      border-radius: 10px;
+      transition: all 0.3s;
+    }
+
+    .light-mode .skill {
+      background: var(--light-card);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .skill p {
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--dark-progress-bg);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .light-mode .progress-bar {
+      background: var(--light-progress-bg);
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--dark-accent);
+    }
+
+    .light-mode .progress-fill {
+      background: var(--light-accent);
+    }
+
+    .socials {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .socials a {
+      color: var(--dark-text);
+      margin: 0 10px;
+      font-size: 1.4rem;
+      transition: color 0.3s;
+    }
+
+    .light-mode .socials a {
+      color: var(--light-text);
+    }
+
+    .socials a:hover {
+      color: var(--dark-accent);
+    }
+
+    .light-mode .socials a:hover {
+      color: var(--light-accent);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--dark-header);
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+
+    .light-mode footer {
+      background: var(--light-header);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <nav aria-label="Primary Navigation">
+      <div class="logo">Taufiq Zahan Tushar</div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li>
+          <button class="theme-toggle" aria-label="Toggle light/dark mode">
+            <i class="fas fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Hero Section">
+      <h1>Hello, I'm Taufiq Zahan Tushar</h1>
+      <p><span id="typed"></span></p>
+      <p>BSc in CSE student passionate about crafting digital experiences & solving meaningful problems through tech.</p>
+      <div class="buttons">
+        <a href="#projects">Explore Projects</a>
+        <a href="#contact">Get in Touch</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I'm Taufiq Zahan Tushar, a Computer Science student at Green University of Bangladesh. My interests include software development, system design, and exploring emerging fields like AI and Quantum Computing.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Featured Projects</h2>
+      <div class="projects">
+        <div class="project-card">
+          <h3>NutriNet</h3>
+          <p>Health planner that recommends personalized meals using algorithms like Dijkstra's. Java + GUI-based.</p>
+          <a href="#">🔗 View Project</a>
+        </div>
+        <div class="project-card">
+          <h3>ProTask Manager</h3>
+          <p>Visual Kanban-style task tracker (To Do / Doing / Done) using HTML, CSS, PHP, and Java GUI.</p>
+          <a href="#">🔗 View Project</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>My Skills</h2>
+      <div class="skills-list">
+        <div class="skill">
+          <p>HTML & CSS</p>
+          <div class="progress-bar"><div class="progress-fill" style="width: 90%"></div></div>
+        </div>
+        <div class="skill">
+          <p>Java & OOP</p>
+          <div class="progress-bar"><div class="progress-fill" style="width: 85%"></div></div>
+        </div>
+        <div class="skill">
+          <p>PHP & MySQL</p>
+          <div class="progress-bar"><div class="progress-fill" style="width: 80%"></div></div>
+        </div>
+        <div class="skill">
+          <p>Problem Solving</p>
+          <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+      <div class="socials" aria-label="Social Links">
+        <a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="#"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2025 Taufiq Zahan Tushar — Designed & developed with passion.</p>
+  </footer>
+
+  <script>
+    const typed = new Typed("#typed", {
+      strings: [
+        "Web Developer",
+        "CSE Student",
+        "Problem Solver",
+        "Java Enthusiast"
+      ],
+      typeSpeed: 60,
+      backSpeed: 40,
+      loop: true
+    });
+
+    // Theme toggle functionality
+    const themeToggle = document.querySelector('.theme-toggle');
+    const icon = themeToggle.querySelector('i');
+    
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      
+      if (document.body.classList.contains('light-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+      
+      // Save preference to localStorage
+      const isLightMode = document.body.classList.contains('light-mode');
+      localStorage.setItem('lightMode', isLightMode);
+    });
+    
+    // Check for saved theme preference
+    if (localStorage.getItem('lightMode') === 'true') {
+      document.body.classList.add('light-mode');
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+    }
+  </script>
+</body>
+</html>
