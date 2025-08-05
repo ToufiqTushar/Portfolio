@@ -341,6 +341,105 @@
         width: 100%;
         margin-top: 1rem;
       }
+      /* Contact Section Styles */
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      background: var(--dark-card);
+      padding: 1.5rem;
+      border-radius: 12px;
+      transition: transform 0.3s;
+    }
+
+    .light-mode .contact-item {
+      background: var(--light-card);
+    }
+
+    .contact-item:hover {
+      transform: translateY(-3px);
+    }
+
+    .contact-icon {
+      font-size: 1.8rem;
+      color: var(--dark-accent);
+    }
+
+    .light-mode .contact-icon {
+      color: var(--light-accent);
+    }
+
+    .contact-item h3 {
+      margin-bottom: 0.5rem;
+      color: var(--dark-accent);
+    }
+
+    .light-mode .contact-item h3 {
+      color: var(--light-accent);
+    }
+
+    .contact-item a {
+      color: var(--dark-text);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .light-mode .contact-item a {
+      color: var(--light-text);
+    }
+
+    .contact-item a:hover {
+      color: var(--dark-accent);
+    }
+
+    .light-mode .contact-item a:hover {
+      color: var(--light-accent);
+    }
+
+    /* Social Links Update */
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .socials a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      background: var(--dark-card);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .light-mode .socials a {
+      background: var(--light-card);
+    }
+
+    .socials a:hover {
+      background: var(--dark-accent);
+      color: white !important;
+      transform: translateY(-3px);
+    }
+
+    .light-mode .socials a:hover {
+      background: var(--light-accent);
+    }
+
+    .social-text {
+      font-size: 1rem;
+      font-weight: 600;
+    }
     }
   </style>
 </head>
@@ -416,15 +515,36 @@
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-      <div class="socials" aria-label="Social Links">
-        <a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-        <a href="#"><i class="fab fa-github" aria-hidden="true"></i></a>
-        <a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+<section id="contact">
+  <h2>Contact Me</h2>
+  <div class="contact-container">
+    <div class="contact-item">
+      <i class="fas fa-phone-alt contact-icon"></i>
+      <div>
+        <h3>Phone</h3>
+        <a href="tel:+8801648806191">+880 1648-806191</a>
       </div>
-    </section>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-envelope contact-icon"></i>
+      <div>
+        <h3>Email</h3>
+        <a href="mailto:your.email@example.com">toufiqtushar99@gmail.com</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="socials" aria-label="Social Links">
+    <a href="https://www.linkedin.com/in/taufiq-zahan-tushar/" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-linkedin"></i>
+      <span class="social-text">LinkedIn</span>
+    </a>
+    <a href="https://github.com/ToufiqTushar" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-github"></i>
+      <span class="social-text">GitHub</span>
+    </a>
+  </div>
+</section>
   </main>
 
   <footer role="contentinfo">
