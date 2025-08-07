@@ -455,6 +455,112 @@
       background: var(--gradient);
       border-radius: 4px;
     }
+    /* Achievements Section */
+    .achievements {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .achievement-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      border: 1px solid rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dark-mode .achievement-card {
+      background: var(--dark-card-bg);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .achievement-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+    }
+
+    .achievement-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient);
+      color: white;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .achievement-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .role {
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .date {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .achievement-list {
+      margin: 1.5rem 0;
+      padding-left: 1.2rem;
+    }
+
+    .achievement-list li {
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+
+    .achievement-list li::before {
+      content: '▹';
+      position: absolute;
+      left: -1.2rem;
+      color: var(--primary);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Add this to your existing tag style */
+    .tag {
+      background: var(--light-gray);
+      color: var(--dark);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .dark-mode .tag {
+      background: #1e293b;
+      color: var(--light);
+    }
+
+    .tag:hover {
+      background: var(--primary);
+      color: white;
+    }
 
     /* Modern projects section */
     .projects-container {
@@ -979,6 +1085,72 @@
       </div>
     </div>
   </section>
+
+  <!-- Achievement section -->
+<section class="achievements" id="achievements">
+  <div class="container">
+    <h2 class="section-title">Leadership & Achievements</h2>
+    
+    <div class="achievements-grid">
+      <!-- IEEE Card -->
+      <div class="achievement-card glass">
+        <div class="achievement-icon">
+          <i class="fas fa-laptop-code"></i>
+        </div>
+        <h3>IEEE Computer Society - GUB Chapter</h3>
+        <p class="role">Web Master & Newsletter Editor</p>
+        <p class="date">2023 - Present</p>
+        <ul class="achievement-list">
+          <li>Redesigned chapter website with 40% faster load times</li>
+          <li>Increased newsletter engagement by 65%</li>
+          <li>Organized 5+ tech workshops</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Web Development</span>
+          <span class="tag">Content Strategy</span>
+        </div>
+      </div>
+
+      <!-- BASIS Card -->
+      <div class="achievement-card glass">
+        <div class="achievement-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <h3>BASIS Students' Forum – GUB Chapter</h3>
+        <p class="role">Information Secretary</p>
+        <p class="date">2022 - Present</p>
+        <ul class="achievement-list">
+          <li>Managed communications for 500+ members</li>
+          <li>Coordinated 3 national-level tech events</li>
+          <li>Boosted social media following by 120%</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Leadership</span>
+          <span class="tag">Event Management</span>
+        </div>
+      </div>
+
+      <!-- Anchoring Card -->
+      <div class="achievement-card glass">
+        <div class="achievement-icon">
+          <i class="fas fa-microphone"></i>
+        </div>
+        <h3>Anchoring Experience</h3>
+        <p class="role">Event Host & Presenter</p>
+        <p class="date">2019 - Present</p>
+        <ul class="achievement-list">
+          <li>Hosted 10+ university tech events</li>
+          <li>Moderated panel discussions with industry experts</li>
+          <li>Trained 15 juniors in public speaking</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">Public Speaking</span>
+          <span class="tag">Communication</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- Projects Section -->
   <section class="projects" id="projects">
