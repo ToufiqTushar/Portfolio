@@ -21,7 +21,7 @@
       --dark-bg: #0f172a;
       --card-bg: rgba(255, 255, 255, 0.9);
       --dark-card-bg: rgba(30, 41, 59, 0.9);
-      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
       --border-radius: 12px;
       --border-radius-lg: 20px;
       --shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -31,14 +31,16 @@
       --gradient: linear-gradient(135deg, var(--primary), var(--primary-dark));
     }
 
+    /* Smooth scroll behavior */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
@@ -55,53 +57,34 @@
       color: var(--light);
     }
 
-    /* Animation Keyframes */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* Scroll Animation Classes */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: var(--transition);
     }
 
-    @keyframes gradientPulse {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-      100% { transform: translateY(0px); }
-    }
+    /* Animation Delays */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
 
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
-      70% { box-shadow: 0 0 0 20px rgba(99, 102, 241, 0); }
+    /* Section Highlight */
+    @keyframes highlightPulse {
+      0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.3); }
+      70% { box-shadow: 0 0 0 15px rgba(99, 102, 241, 0); }
       100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
     }
 
-    /* Animation Classes */
-    .animate-section {
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out forwards;
-    }
-
-    .hero-content { animation-delay: 0.2s; }
-    .about-content { animation-delay: 0.3s; }
-    .skills-container { animation-delay: 0.4s; }
-    .education-item:first-child { animation-delay: 0.5s; }
-    .education-item:last-child { animation-delay: 0.6s; }
-    .achievements-grid { animation-delay: 0.7s; }
-    .projects-container { animation-delay: 0.8s; }
-    .contact-card { animation-delay: 0.9s; }
-
     .highlight-section {
-      animation: pulse 2s ease-out;
+      animation: highlightPulse 1.5s ease-out;
     }
 
     /* Modern glass effect */
@@ -1110,6 +1093,30 @@
       }
     }
 
+    /* Animation Keyframes */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes gradientPulse {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0px); }
+    }
+
     /* Modern responsive design */
     @media (max-width: 992px) {
       .hero-content,
@@ -1218,9 +1225,9 @@
   </div>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero animate-on-scroll" id="home">
     <div class="container">
-      <div class="hero-content animate-section">
+      <div class="hero-content">
         <div class="hero-text">
           <h1>Innovative Solutions <span class="gradient-text" id="dynamicText">Crafted with Code</span></h1>
           <p>I'm Taufiq Zahan Tushar, a Computer Science student specializing in building performant, accessible digital experiences.</p>
@@ -1245,10 +1252,10 @@
   </section>
 
   <!-- About Section -->
-  <section class="about" id="about">
+  <section class="about animate-on-scroll delay-1" id="about">
     <div class="container">
       <h2 class="section-title">About Me</h2>
-      <div class="about-content animate-section">
+      <div class="about-content">
         <div class="about-image">
           <img src="Tushar.jpg" alt="About me">
         </div>
@@ -1262,11 +1269,11 @@
   </section>
 
   <!-- Skills Section -->
-  <section class="skills" id="skills">
+  <section class="skills animate-on-scroll delay-2" id="skills">
     <div class="container">
       <h2 class="section-title">Technical Skills</h2>
-      <div class="skills-container animate-section">
-        <div class="skill-item">
+      <div class="skills-container">
+        <div class="skill-item animate-on-scroll delay-3">
           <div class="skill-title">
             <div class="skill-icon">
               <i class="fab fa-js"></i>
@@ -1278,7 +1285,7 @@
             <div class="skill-progress" style="width: 90%"></div>
           </div>
         </div>
-        <div class="skill-item">
+        <div class="skill-item animate-on-scroll delay-4">
           <div class="skill-title">
             <div class="skill-icon">
               <i class="fab fa-java"></i>
@@ -1290,7 +1297,7 @@
             <div class="skill-progress" style="width: 85%"></div>
           </div>
         </div>
-        <div class="skill-item">
+        <div class="skill-item animate-on-scroll delay-5">
           <div class="skill-title">
             <div class="skill-icon">
               <i class="fas fa-database"></i>
@@ -1302,7 +1309,7 @@
             <div class="skill-progress" style="width: 80%"></div>
           </div>
         </div>
-        <div class="skill-item">
+        <div class="skill-item animate-on-scroll">
           <div class="skill-title">
             <div class="skill-icon">
               <i class="fas fa-code"></i>
@@ -1319,10 +1326,10 @@
   </section>
 
   <!-- Education Section -->
-  <section class="education" id="education">
+  <section class="education animate-on-scroll delay-3" id="education">
     <div class="container">
       <h2 class="section-title">Education</h2>
-      <div class="education-item animate-section">
+      <div class="education-item">
         <div class="education-header">
           <h3 class="education-degree">B.Sc. in Computer Science & Engineering</h3>
           <span class="education-date">2021 - Present</span>
@@ -1336,7 +1343,7 @@
           <span class="tag">Database Systems</span>
         </div>
       </div>
-      <div class="education-item animate-section">
+      <div class="education-item animate-on-scroll delay-4">
         <div class="education-header">
           <h3 class="education-degree">Higher Secondary Certificate</h3>
           <span class="education-date">2018 - 2020</span>
@@ -1348,13 +1355,13 @@
   </section>
 
   <!-- Achievement section -->
-  <section class="achievements" id="achievements">
+  <section class="achievements animate-on-scroll delay-4" id="achievements">
     <div class="container">
       <h2 class="section-title">Leadership & Achievements</h2>
       
-      <div class="achievements-grid animate-section">
+      <div class="achievements-grid">
         <!-- IEEE Card -->
-        <div class="achievement-card glass">
+        <div class="achievement-card glass animate-on-scroll delay-1">
           <div class="achievement-icon">
             <i class="fas fa-laptop-code"></i>
           </div>
@@ -1373,7 +1380,7 @@
         </div>
 
         <!-- BASIS Card -->
-        <div class="achievement-card glass">
+        <div class="achievement-card glass animate-on-scroll delay-2">
           <div class="achievement-icon">
             <i class="fas fa-users"></i>
           </div>
@@ -1392,7 +1399,7 @@
         </div>
 
         <!-- Anchoring Card -->
-        <div class="achievement-card glass">
+        <div class="achievement-card glass animate-on-scroll delay-3">
           <div class="achievement-icon">
             <i class="fas fa-microphone"></i>
           </div>
@@ -1414,11 +1421,11 @@
   </section>
 
   <!-- Projects Section -->
-  <section class="projects" id="projects">
+  <section class="projects animate-on-scroll delay-5" id="projects">
     <div class="container">
       <h2 class="section-title">Featured Work</h2>
-      <div class="projects-container animate-section">
-        <div class="project-card">
+      <div class="projects-container">
+        <div class="project-card animate-on-scroll">
           <div class="project-image">
             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=350&q=80" alt="NutriNet">
           </div>
@@ -1442,7 +1449,7 @@
             </div>
           </div>
         </div>
-        <div class="project-card">
+        <div class="project-card animate-on-scroll delay-1">
           <div class="project-image">
             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=350&q=80" alt="ProTask Manager">
           </div>
@@ -1471,11 +1478,11 @@
   </section>
 
   <!-- Contact Section -->
-  <section class="contact" id="contact">
+  <section class="contact animate-on-scroll" id="contact">
     <div class="container">
       <h2 class="section-title">Let's Connect</h2>
       <div class="contact-container">
-        <div class="contact-card glass animate-section">
+        <div class="contact-card glass">
           <div class="contact-info">
             <div class="contact-item">
               <div class="contact-icon">
@@ -1533,154 +1540,179 @@
   </footer>
 
   <script>
-    // Theme toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const icon = themeToggle.querySelector('i');
-    
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
+    // Enhanced Scroll Animation Controller
+    class ScrollAnimator {
+      constructor() {
+        this.animationElements = document.querySelectorAll('.animate-on-scroll');
+        this.lastScrollPosition = 0;
+        this.ticking = false;
+        this.init();
+      }
+
+      init() {
+        window.addEventListener('scroll', this.handleScroll.bind(this));
+        window.addEventListener('resize', this.handleScroll.bind(this));
+        window.addEventListener('load', this.handleScroll.bind(this));
+        this.handleScroll(); // Initial check
+      }
+
+      handleScroll() {
+        this.lastScrollPosition = window.scrollY;
+
+        if (!this.ticking) {
+          window.requestAnimationFrame(() => {
+            this.checkElements();
+            this.ticking = false;
+          });
+          this.ticking = true;
+        }
+      }
+
+      checkElements() {
+        const windowHeight = window.innerHeight;
+        const triggerPoint = windowHeight * 0.75;
+
+        this.animationElements.forEach(element => {
+          const elementTop = element.getBoundingClientRect().top;
+          const elementBottom = element.getBoundingClientRect().bottom;
+          
+          // Check if element is in viewport (scrolling down or up)
+          if (elementTop < triggerPoint && elementBottom > 0) {
+            element.classList.add('animated');
+          }
+        });
+      }
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize scroll animations
+      new ScrollAnimator();
+
+      // Theme toggle
+      const themeToggle = document.getElementById('themeToggle');
+      const icon = themeToggle.querySelector('i');
       
-      if (document.body.classList.contains('dark-mode')) {
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        
+        if (document.body.classList.contains('dark-mode')) {
+          icon.classList.remove('fa-moon');
+          icon.classList.add('fa-sun');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          icon.classList.remove('fa-sun');
+          icon.classList.add('fa-moon');
+          localStorage.setItem('theme', 'light');
+        }
+      });
+      
+      // Check for saved theme preference
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
         icon.classList.remove('fa-moon');
         icon.classList.add('fa-sun');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-        localStorage.setItem('theme', 'light');
       }
-    });
-    
-    // Check for saved theme preference
-    if (localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('dark-mode');
-      icon.classList.remove('fa-moon');
-      icon.classList.add('fa-sun');
-    }
-    
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
+      
+      // Header scroll effect
+      const header = document.getElementById('header');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
 
-    // Loading animation
-    window.addEventListener('load', function() {
-      const loader = document.getElementById('loader');
-      setTimeout(() => {
-        loader.classList.add('hidden');
-      }, 1000);
-    });
+      // Loading animation
+      window.addEventListener('load', function() {
+        const loader = document.getElementById('loader');
+        setTimeout(() => {
+          loader.classList.add('hidden');
+        }, 1000);
+      });
 
-    // Mobile navigation
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    const mobileNavClose = document.getElementById('mobileNavClose');
+      // Mobile navigation
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      const mobileNavClose = document.getElementById('mobileNavClose');
 
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileNav.classList.add('active');
-    });
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileNav.classList.add('active');
+      });
 
-    mobileNavClose.addEventListener('click', () => {
-      mobileNav.classList.remove('active');
-    });
-
-    // Close mobile nav when clicking on a link
-    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-    mobileNavLinks.forEach(link => {
-      link.addEventListener('click', () => {
+      mobileNavClose.addEventListener('click', () => {
         mobileNav.classList.remove('active');
       });
-    });
 
-    // Smooth scrolling for all links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
+      // Close mobile nav when clicking on a link
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileNav.classList.remove('active');
+        });
+      });
+
+      // Smooth scrolling for all links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
           
-          // Add pulse animation to target section
-          targetElement.classList.add('highlight-section');
-          setTimeout(() => {
-            targetElement.classList.remove('highlight-section');
-          }, 2000);
-        }
-      });
-    });
-
-    // Scroll animation trigger
-    const animateOnScroll = () => {
-      const sections = document.querySelectorAll('section');
-      
-      sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        if (sectionTop < windowHeight * 0.75) {
-          section.querySelectorAll('.animate-section').forEach(el => {
-            el.classList.add('animate-section');
-          });
-        }
-      });
-    };
-
-    // Initial check
-    animateOnScroll();
-    
-    // Check on scroll
-    window.addEventListener('scroll', animateOnScroll);
-
-    // Typing animation for hero text
-    function initTypingAnimation() {
-      const dynamicText = document.getElementById('dynamicText');
-      const words = ["Crafted with Code", "Built with Passion", "Designed with Care"];
-      let wordIndex = 0;
-      let charIndex = 0;
-      let isDeleting = false;
-      let isEnd = false;
-
-      const type = () => {
-        const currentWord = words[wordIndex];
-        const currentChar = currentWord.substring(0, charIndex);
-        dynamicText.textContent = currentChar;
-
-        if (!isDeleting && charIndex < currentWord.length) {
-          charIndex++;
-          setTimeout(type, 100);
-        } else if (isDeleting && charIndex > 0) {
-          charIndex--;
-          setTimeout(type, 50);
-        } else {
-          isDeleting = !isDeleting;
-          if (!isDeleting) {
-            wordIndex = (wordIndex + 1) % words.length;
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const targetPosition = targetElement.offsetTop - headerHeight;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+            
+            // Highlight target section
+            targetElement.classList.add('highlight-section');
+            setTimeout(() => {
+              targetElement.classList.remove('highlight-section');
+            }, 2000);
           }
-          setTimeout(type, 1000);
-        }
-      };
+        });
+      });
 
-      type();
-    }
+      // Typing animation for hero text
+      function initTypingAnimation() {
+        const dynamicText = document.getElementById('dynamicText');
+        const words = ["Crafted with Code", "Built with Passion", "Designed with Care"];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isEnd = false;
 
-    // Initialize animations when page loads
-    document.addEventListener('DOMContentLoaded', () => {
+        const type = () => {
+          const currentWord = words[wordIndex];
+          const currentChar = currentWord.substring(0, charIndex);
+          dynamicText.textContent = currentChar;
+
+          if (!isDeleting && charIndex < currentWord.length) {
+            charIndex++;
+            setTimeout(type, 100);
+          } else if (isDeleting && charIndex > 0) {
+            charIndex--;
+            setTimeout(type, 50);
+          } else {
+            isDeleting = !isDeleting;
+            if (!isDeleting) {
+              wordIndex = (wordIndex + 1) % words.length;
+            }
+            setTimeout(type, 1000);
+          }
+        };
+
+        type();
+      }
+
       initTypingAnimation();
-      
-      // Initially show all animate-section elements if they're already in view
-      setTimeout(animateOnScroll, 500);
     });
   </script>
 </body>
