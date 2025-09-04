@@ -1117,6 +1117,27 @@
       100% { transform: translateY(0px); }
     }
 
+    /* Enhanced typing animation */
+    .typing-container {
+      display: inline-block;
+      position: relative;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1.1em;
+      background-color: var(--primary);
+      margin-left: 2px;
+      animation: blink 1s infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
     /* Modern responsive design */
     @media (max-width: 992px) {
       .hero-content,
@@ -1197,6 +1218,7 @@
           <a href="#about" class="nav-link">About</a>
           <a href="#skills" class="nav-link">Skills</a>
           <a href="#education" class="nav-link">Education</a>
+          <a href="#achievements" class="nav-link">Achievements</a>
           <a href="#projects" class="nav-link">Projects</a>
           <a href="#contact" class="nav-link">Contact</a>
         </div>
@@ -1219,6 +1241,7 @@
       <a href="#about" class="mobile-nav-link">About</a>
       <a href="#skills" class="mobile-nav-link">Skills</a>
       <a href="#education" class="mobile-nav-link">Education</a>
+      <a href="#achievements" class="mobile-nav-link">Achievements</a>
       <a href="#projects" class="mobile-nav-link">Projects</a>
       <a href="#contact" class="mobile-nav-link">Contact</a>
     </div>
@@ -1229,7 +1252,7 @@
     <div class="container">
       <div class="hero-content">
         <div class="hero-text">
-          <h1>Innovative Solutions <span class="gradient-text" id="dynamicText">Crafted with Code</span></h1>
+          <h1>Innovative Solutions <span class="gradient-text typing-container"><span id="dynamicText"></span><span class="cursor"></span></span></h1>
           <p>I'm Taufiq Zahan Tushar, a Computer Science student specializing in building performant, accessible digital experiences.</p>
           <div class="hero-buttons">
             <a href="#projects" class="btn btn-primary">
@@ -1496,7 +1519,7 @@
                 <i class="fas fa-envelope"></i>
               </div>
               <h3 class="contact-text">Email</h3>
-              <a href="mailto:your.email@example.com" class="contact-link">your.email@example.com</a>
+              <a href="mailto:taufiq.zahan.tushar@gmail.com" class="contact-link">taufiq.zahan.tushar@gmail.com</a>
             </div>
           </div>
           <div class="social-links">
@@ -1523,6 +1546,8 @@
         <div class="footer-links">
           <a href="#about" class="footer-link">About</a>
           <a href="#skills" class="footer-link">Skills</a>
+          <a href="#education" class="footer-link">Education</a>
+          <a href="#achievements" class="footer-link">Achievements</a>
           <a href="#projects" class="footer-link">Projects</a>
           <a href="#contact" class="footer-link">Contact</a>
         </div>
@@ -1584,10 +1609,72 @@
       }
     }
 
+    // Enhanced Typing Animation
+    class TypingAnimation {
+      constructor(elementId, words, typingSpeed = 100, deletingSpeed = 50, pauseTime = 1000) {
+        this.element = document.getElementById(elementId);
+        this.words = words;
+        this.typingSpeed = typingSpeed;
+        this.deletingSpeed = deletingSpeed;
+        this.pauseTime = pauseTime;
+        this.wordIndex = 0;
+        this.charIndex = 0;
+        this.isDeleting = false;
+        this.init();
+      }
+
+      init() {
+        this.type();
+      }
+
+      type() {
+        const currentWord = this.words[this.wordIndex];
+        
+        if (this.isDeleting) {
+          // Delete characters
+          this.charIndex--;
+        } else {
+          // Type characters
+          this.charIndex++;
+        }
+
+        // Insert the current text into the element
+        this.element.textContent = currentWord.substring(0, this.charIndex);
+
+        // Determine typing speed
+        let typeSpeed = this.typingSpeed;
+        if (this.isDeleting) {
+          typeSpeed = this.deletingSpeed;
+        }
+
+        // Check if word is complete
+        if (!this.isDeleting && this.charIndex === currentWord.length) {
+          // Pause at end of word
+          typeSpeed = this.pauseTime;
+          this.isDeleting = true;
+        } else if (this.isDeleting && this.charIndex === 0) {
+          // Move to next word
+          this.isDeleting = false;
+          this.wordIndex = (this.wordIndex + 1) % this.words.length;
+          typeSpeed = 500; // Pause before starting next word
+        }
+
+        setTimeout(() => this.type(), typeSpeed);
+      }
+    }
+
     // Initialize when DOM is loaded
     document.addEventListener('DOMContentLoaded', () => {
       // Initialize scroll animations
       new ScrollAnimator();
+
+      // Initialize typing animation
+      new TypingAnimation('dynamicText', [
+        "Crafted with Code", 
+        "Built with Passion", 
+        "Designed with Care",
+        "Powered by Innovation"
+      ], 100, 50, 1000);
 
       // Theme toggle
       const themeToggle = document.getElementById('themeToggle');
@@ -1679,40 +1766,6 @@
           }
         });
       });
-
-      // Typing animation for hero text
-      function initTypingAnimation() {
-        const dynamicText = document.getElementById('dynamicText');
-        const words = ["Crafted with Code", "Built with Passion", "Designed with Care"];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let isEnd = false;
-
-        const type = () => {
-          const currentWord = words[wordIndex];
-          const currentChar = currentWord.substring(0, charIndex);
-          dynamicText.textContent = currentChar;
-
-          if (!isDeleting && charIndex < currentWord.length) {
-            charIndex++;
-            setTimeout(type, 100);
-          } else if (isDeleting && charIndex > 0) {
-            charIndex--;
-            setTimeout(type, 50);
-          } else {
-            isDeleting = !isDeleting;
-            if (!isDeleting) {
-              wordIndex = (wordIndex + 1) % words.length;
-            }
-            setTimeout(type, 1000);
-          }
-        };
-
-        type();
-      }
-
-      initTypingAnimation();
     });
   </script>
 </body>
